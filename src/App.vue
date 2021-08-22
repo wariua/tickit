@@ -67,10 +67,17 @@ export default {
 
   data: () => ({
     eventSource: null,
-    eventUrl: null,
+    eventUrl: null
+  }),
 
-    eventSources: []
-  })
+  computed: {
+    eventSources: () => {
+      return EventLists.data().eventSources.map(src => ({
+        text: src.text,
+        value: src.id
+      }))
+    }
+  }
 }
 </script>
 

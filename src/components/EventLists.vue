@@ -10,6 +10,13 @@ export default {
 
   props: ['src'],
 
+  data: function () {
+    return {
+      eventSources: [
+      ]
+    }
+  },
+
   watch: {
     src: (newValue) => {
     }
