@@ -3,6 +3,10 @@ module.exports = {
     'vuetify'
   ],
 
+  devServer: {
+    proxy: 'http://ticket.interpark.com'
+  },
+
   pluginOptions: {
     i18n: {
       locale: undefined,
