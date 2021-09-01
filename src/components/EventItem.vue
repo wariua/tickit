@@ -63,6 +63,7 @@
               x-large
               class="mx-6"
               color="black"
+              v-on:click="$emit('open', item.id)"
             >
               <v-icon>mdi-open-in-new</v-icon>
             </v-btn>

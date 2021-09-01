@@ -34,6 +34,7 @@
             v-bind:item="ev"
             v-bind:to-left="list != 'left'"
             v-bind:to-right="list != 'right'"
+            v-on:open="openEvent"
           />
         </v-list>
       </v-tab-item>
@@ -199,6 +200,11 @@ export default {
 
     eventUrlInterpark (id) {
       return 'http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GroupCode=' + id
+    },
+
+    openEvent (id) {
+      const eventSource = this.eventSources.find(x => x.id === this.src)
+      this.$emit('open-event-detail', eventSource.eventUrl(id))
     }
   }
 }

@@ -37,6 +37,7 @@
         <div class="pane" :style="{ minWidth: '200px', width: '300px' }">
           <event-lists
             v-bind:src="eventSource"
+            v-on:open-event-detail="openEventDetail"
           />
         </div>
         <multipane-resizer/>
@@ -76,6 +77,12 @@ export default {
         text: src.text,
         value: src.id
       }))
+    }
+  },
+
+  methods: {
+    openEventDetail (url) {
+      this.eventUrl = url
     }
   }
 }
