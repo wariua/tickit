@@ -47,6 +47,7 @@
               x-large
               color="black"
               justify="center"
+              v-on:click="$emit('move', item.id, 'left')"
             >
               <v-icon>mdi-arrow-left</v-icon>
             </v-btn>
@@ -73,6 +74,7 @@
               icon
               x-large
               color="black"
+              v-on:click="$emit('move', item.id, 'right')"
             >
               <v-icon>mdi-arrow-right</v-icon>
             </v-btn>

@@ -35,6 +35,7 @@
             v-bind:to-left="list != 'left'"
             v-bind:to-right="list != 'right'"
             v-on:open="openEvent"
+            v-on:move="moveEvent"
           />
         </v-list>
       </v-tab-item>
@@ -200,7 +201,9 @@ export default {
     },
 
     updateLists (events) {
+      this.allEvents.left = []
       this.allEvents.center = events
+      this.allEvents.right = []
     },
 
     eventUrlInterpark (id) {
@@ -210,6 +213,33 @@ export default {
     openEvent (id) {
       const eventSource = this.eventSources.find(x => x.id === this.src)
       this.$emit('open-event-detail', eventSource.eventUrl(id))
+    },
+
+    moveEvent (id, dir) {
+      var src, dst
+      var ev
+      const allEvents = {
+        left: this.allEvents.left,
+        center: this.allEvents.center,
+        right: this.allEvents.right
+      }
+
+      if ((ev = allEvents.center.find(x => x.id === id))) {
+        src = 'center'
+        dst = dir === 'left' ? 'left' : 'right'
+      } else if (dir === 'left') {
+        ev = allEvents.right.find(x => x.id === id)
+        src = 'right'
+        dst = 'center'
+      } else {
+        ev = allEvents.left.find(x => x.id === id)
+        src = 'left'
+        dst = 'center'
+      }
+
+      allEvents[src] = allEvents[src].filter(x => x.id !== id)
+      allEvents[dst] = this.sortEvents(allEvents[dst].concat(ev))
+      this.allEvents = allEvents
     }
   }
 }
