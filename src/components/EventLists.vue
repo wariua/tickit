@@ -13,6 +13,30 @@ export default {
   data: function () {
     return {
       eventSources: [
+        {
+          id: 'interpark-musical',
+          text: '인터파크 뮤지컬'
+        },
+        {
+          id: 'interpark-concert',
+          text: '인터파크 콘서트'
+        },
+        {
+          id: 'interpark-classic',
+          text: '인터파크 클래식/무용'
+        },
+        {
+          id: 'interpark-drama',
+          text: '인터파크 연극'
+        },
+        {
+          id: 'interpark-les',
+          text: '인터파크 전시/행사'
+        },
+        {
+          id: 'interpark-family',
+          text: '인터파크 아동/가족'
+        }
       ]
     }
   },
