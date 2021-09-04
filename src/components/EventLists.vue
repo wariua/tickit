@@ -154,7 +154,12 @@ export default {
       })
         .then(response => response.arrayBuffer())
         .then(bytes => eventSource.parse(bytes))
+        .then(events => this.sortEvents(events))
         .then(events => this.updateLists(events))
+    },
+
+    sortEvents (events) {
+      return events.sort((a, b) => a.dateFrom.localeCompare(b.dateFrom))
     },
 
     parseInterpark (bytes) {
