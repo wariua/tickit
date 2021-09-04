@@ -21,12 +21,14 @@
 
       <v-btn
         icon
+        disabled
       >
         <v-icon>mdi-map-marker-remove</v-icon>
       </v-btn>
 
       <v-btn
         icon
+        disabled
       >
         <v-icon>mdi-cog</v-icon>
       </v-btn>
