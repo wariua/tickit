@@ -4,6 +4,7 @@
       <v-card
         v-bind:id="'item-' + item.id"
         outlined
+        v-bind:color="item.new ? 'lime lighten-5' : undefined"
         class="event-item ma-1"
         v-bind:class="item.focused ? 'event-item-focused' : ''"
         v-bind:ripple="false"

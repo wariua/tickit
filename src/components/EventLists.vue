@@ -228,6 +228,7 @@ export default {
         } else if (eventIds.right.find(id => id === ev.id)) {
           allEvents.right.push(ev)
         } else {
+          ev.new = true
           newEvents.push(ev)
         }
       }
