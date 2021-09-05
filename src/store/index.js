@@ -11,12 +11,21 @@ const vuexLocalStorage = new VuexPersist({
 
 export default new Vuex.Store({
   state: {
+    eventIds: {}
   },
+
+  getters: {
+    getEventIds: (state) => (srcId) => {
+      return state.eventIds[srcId] ||
+        { left: [], center: [], right: [] }
+    }
+  },
+
   mutations: {
+    setEventIds (state, payload) {
+      state.eventIds[payload.srcId] = payload.eventIds
+    }
   },
-  actions: {
-  },
-  modules: {
-  },
+
   plugins: [vuexLocalStorage.plugin]
 })

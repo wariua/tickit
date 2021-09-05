@@ -128,6 +128,17 @@ export default {
   watch: {
     src: function (newValue) {
       this.fetchEvents(newValue)
+    },
+
+    allEvents: function (newValue) {
+      this.$store.commit('setEventIds', {
+        srcId: this.src,
+        eventIds: {
+          left: newValue.left.map(ev => ev.id),
+          center: newValue.center.map(ev => ev.id),
+          right: newValue.right.map(ev => ev.id)
+        }
+      })
     }
   },
 
@@ -201,9 +212,33 @@ export default {
     },
 
     updateLists (events) {
-      this.allEvents.left = []
-      this.allEvents.center = events
-      this.allEvents.right = []
+      const eventIds = this.$store.getters.getEventIds(this.src)
+      const allEvents = {
+        left: [],
+        center: [],
+        right: []
+      }
+      const newEvents = []
+
+      for (const ev of events) {
+        if (eventIds.left.find(id => id === ev.id)) {
+          allEvents.left.push(ev)
+        } else if (eventIds.center.find(id => id === ev.id)) {
+          allEvents.center.push(ev)
+        } else if (eventIds.right.find(id => id === ev.id)) {
+          allEvents.right.push(ev)
+        } else {
+          newEvents.push(ev)
+        }
+      }
+
+      allEvents.center = allEvents.center.concat(newEvents)
+
+      this.sortEvents(allEvents.left)
+      this.sortEvents(allEvents.center)
+      this.sortEvents(allEvents.right)
+
+      this.allEvents = allEvents
     },
 
     eventUrlInterpark (id) {
