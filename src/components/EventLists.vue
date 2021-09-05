@@ -171,7 +171,7 @@ export default {
     },
 
     sortEvents (events) {
-      return events.sort((a, b) => a.dateFrom.localeCompare(b.dateFrom))
+      return events.sort((a, b) => a.dateFrom - b.dateFrom)
     },
 
     parseInterpark (bytes) {
@@ -203,8 +203,8 @@ export default {
           title,
           imgUrl,
           place,
-          dateFrom: datePair[0],
-          dateTo: datePair[1]
+          dateFrom: new Date(datePair[0]),
+          dateTo: new Date(datePair[1])
         })
       }
 

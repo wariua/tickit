@@ -27,7 +27,7 @@
 
               <v-flex xs10 class="pa-1">
                 <div class="description">
-                  {{ item.dateFrom + '~' + item.dateTo }}<br>
+                  {{ date }}<br>
                   {{ item.place }}
                 </div>
               </v-flex>
@@ -101,6 +101,18 @@ export default {
     item: Object,
     toLeft: Boolean,
     toRight: Boolean
+  },
+
+  computed: {
+    date: function () {
+      if (this.item.dateFrom.getTime() === this.item.dateTo.getTime()) {
+        const weekday = this.item.dateFrom.toLocaleDateString(undefined, { weekday: 'short' })
+        return this.item.dateFrom.toLocaleDateString() + ' (' + weekday + ')'
+      } else {
+        return this.item.dateFrom.toLocaleDateString() + ' ~ ' +
+          this.item.dateTo.toLocaleDateString()
+      }
+    }
   },
 
   watch: {
