@@ -143,7 +143,7 @@ export default {
        * - Enable the proxy in the dev server that relays unknown requests
        *   to a predefined server.
        */
-      var url = eventSource.url
+      let url = eventSource.url
       if (!isElectron()) {
         const parsed = new URL(url)
         url = parsed.pathname + parsed.search
@@ -169,7 +169,7 @@ export default {
       const doc = parser.parseFromString(decoder.decode(bytes), 'text/html')
       const rows = doc.querySelectorAll('div.stit tr')
 
-      var events = []
+      const events = []
 
       for (const row of rows) {
         const aThumb = row.querySelector('td.RKthumb a')
@@ -216,8 +216,8 @@ export default {
     },
 
     moveEvent (id, dir) {
-      var src, dst
-      var ev
+      let src, dst
+      let ev
       const allEvents = {
         left: this.allEvents.left,
         center: this.allEvents.center,
