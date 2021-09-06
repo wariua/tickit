@@ -3,6 +3,7 @@
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+import windowStateKeeper from 'electron-window-state'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
@@ -11,10 +12,17 @@ protocol.registerSchemesAsPrivileged([
 ])
 
 async function createWindow () {
+  const mainWindowState = windowStateKeeper({
+    defaultWidth: 1200,
+    defaultHeight: 900
+  });
+
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 1200,
-    height: 900,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
     webPreferences: {
       webSecurity: false,
 
@@ -24,6 +32,8 @@ async function createWindow () {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+
+  mainWindowState.manage(win)
 
   // Hide menu bar
   win.removeMenu()
