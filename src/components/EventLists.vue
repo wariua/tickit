@@ -117,10 +117,12 @@ export default {
 
   computed: {
     events: function () {
+      const hiddenPlaces = this.$store.state.hiddenPlaces
+
       return {
-        left: this.allEvents.left,
-        center: this.allEvents.center,
-        right: this.allEvents.right
+        left: this.allEvents.left.filter(ev => !hiddenPlaces.includes(ev.place)),
+        center: this.allEvents.center.filter(ev => !hiddenPlaces.includes(ev.place)),
+        right: this.allEvents.right.filter(ev => !hiddenPlaces.includes(ev.place))
       }
     }
   },
@@ -219,6 +221,7 @@ export default {
         right: []
       }
       const newEvents = []
+      const allPlaces = []
 
       for (const ev of events) {
         if (eventIds.left.find(id => id === ev.id)) {
@@ -231,6 +234,10 @@ export default {
           ev.new = true
           newEvents.push(ev)
         }
+
+        if (!allPlaces.includes(ev.place)) {
+          allPlaces.push(ev.place)
+        }
       }
 
       allEvents.center = allEvents.center.concat(newEvents)
@@ -240,6 +247,8 @@ export default {
       this.sortEvents(allEvents.right)
 
       this.allEvents = allEvents
+
+      this.$store.commit('setAllPlaces', { allPlaces })
     },
 
     eventUrlInterpark (id) {

@@ -7,12 +7,17 @@ Vue.use(Vuex)
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex',
   storage: window.localStorage,
-  filter: (mutation) => mutation.type === 'setEventIds'
+  filter: (mutation) => mutation.type === 'setEventIds' ||
+                        mutation.type === 'hidePlace' ||
+                        mutation.type === 'unhidePlace'
 })
 
 export default new Vuex.Store({
   state: {
-    eventIds: {}
+    eventIds: {},
+
+    hiddenPlaces: [],
+    allPlaces: []
   },
 
   getters: {
@@ -25,6 +30,18 @@ export default new Vuex.Store({
   mutations: {
     setEventIds (state, payload) {
       state.eventIds[payload.srcId] = payload.eventIds
+    },
+
+    hidePlace (state, payload) {
+      state.hiddenPlaces = state.hiddenPlaces.concat(payload.place).sort()
+    },
+
+    unhidePlace (state, payload) {
+      state.hiddenPlaces = state.hiddenPlaces.filter(p => p !== payload.place)
+    },
+
+    setAllPlaces (state, payload) {
+      state.allPlaces = payload.allPlaces.sort()
     }
   },
 
