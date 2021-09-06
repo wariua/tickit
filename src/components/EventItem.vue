@@ -8,7 +8,6 @@
         class="event-item ma-1"
         v-bind:class="item.focused ? 'event-item-focused' : ''"
         v-bind:ripple="false"
-        tabindex="-1"
       >
         <v-list-item class="pa-0 ma-1">
           <v-list-item-content class="pa-1">
