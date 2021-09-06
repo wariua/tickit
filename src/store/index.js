@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex',
-  storage: window.localStorage
+  storage: window.localStorage,
+  filter: (mutation) => mutation.type === 'setEventIds'
 })
 
 export default new Vuex.Store({
