@@ -282,12 +282,4 @@ export default {
 </script>
 
 <style>
-div {
-  scrollbar-width: thin;
-}
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #eee; }
-::-webkit-scrollbar-thumb { background: #bbb; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
 </style>
