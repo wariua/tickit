@@ -10,7 +10,6 @@
         v-bind:items="eventSources"
         v-model="eventSource"
         placeholder="공연 목록을 선택해 주세요."
-        prepend-icon="mdi-calendar-text"
         outlined
         hide-details
         dense
