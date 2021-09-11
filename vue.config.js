@@ -8,6 +8,14 @@ module.exports = {
   },
 
   pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        snap: {
+          publish: 'github'
+        }
+      }
+    },
+
     i18n: {
       locale: undefined,
       fallbackLocale: undefined,
