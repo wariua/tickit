@@ -91,9 +91,11 @@
         />
       </v-navigation-drawer>
 
-      <event-detail
-        v-bind:href="eventUrl"
-      />
+      <div style="margin-left: 300px" class="fill-height">
+        <event-detail
+          v-bind:href="eventUrl"
+        />
+      </div>
     </v-main>
   </v-app>
 </template>
