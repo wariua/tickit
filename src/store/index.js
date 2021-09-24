@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
   getters: {
     getEventIds: (state) => (srcId) => {
-      return state.eventIds[srcId] ||
+      return state.eventIds[srcId] ??
         { left: [], center: [], right: [] }
     }
   },
