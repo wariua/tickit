@@ -72,42 +72,42 @@ export default {
         {
           id: 'interpark-musical',
           text: '인터파크 뮤지컬',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Mus&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Mus&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         },
         {
           id: 'interpark-concert',
           text: '인터파크 콘서트',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Liv&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Liv&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         },
         {
           id: 'interpark-classic',
           text: '인터파크 클래식/무용',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Cla&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Cla&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         },
         {
           id: 'interpark-drama',
           text: '인터파크 연극',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Dra&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Dra&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         },
         {
           id: 'interpark-les',
           text: '인터파크 전시/행사',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Eve&SubCa=Eve_T&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Eve&SubCa=Eve_T&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         },
         {
           id: 'interpark-family',
           text: '인터파크 아동/가족',
-          url: 'http://ticket.interpark.com/TPGoodsList.asp?Ca=Fam&Sort=5',
+          url: 'https://ticket.interpark.com/TPGoodsList.asp?Ca=Fam&Sort=5',
           parse: this.parseInterpark,
           eventUrl: this.eventUrlInterpark
         }
@@ -252,7 +252,7 @@ export default {
     },
 
     eventUrlInterpark (id) {
-      return 'http://ticket.interpark.com/Ticket/Goods/GoodsInfo.asp?GroupCode=' + id
+      return `https://tickets.interpark.com/goods/${id}`
     },
 
     openEvent (id) {
