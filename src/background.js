@@ -15,7 +15,7 @@ async function createWindow () {
   const mainWindowState = windowStateKeeper({
     defaultWidth: 1200,
     defaultHeight: 900
-  });
+  })
 
   // Create the browser window.
   const win = new BrowserWindow({
